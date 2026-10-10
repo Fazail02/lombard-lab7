@@ -47,3 +47,40 @@ body {
 .article a {
     color: #ffffff;
 }
+
+.content {
+    width: 600px;
+    margin: 50px auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"],
+textarea {
+    padding: 10px;
+    font-size: 16px;
+}
+
+textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.error {
+    color: #ffdddd;
+    font-weight: bold;
+}
+
+.content a {
+    color: #ffffff;
+}

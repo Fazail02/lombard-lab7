@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import Http404
 from .models import Article
 
@@ -22,3 +22,33 @@ def get_article(request, article_id):
         'article.html',
         {'post': post}
     )
+
+def create_post(request):
+    if request.user.is_anonymous:
+        raise Http404
+
+    form = {}
+
+    if request.method == "POST":
+        form = {
+            "title": request.POST.get("title", "").strip(),
+            "text": request.POST.get("text", "").strip(),
+        }
+
+        if not form["title"] or not form["text"]:
+            form["errors"] = "Не все поля заполнены"
+            return render(request, "create_post.html", {"form": form})
+
+        if Article.objects.filter(title=form["title"]).exists():
+            form["errors"] = "Статья с таким названием уже существует"
+            return render(request, "create_post.html", {"form": form})
+
+        article = Article.objects.create(
+            title=form["title"],
+            text=form["text"],
+            author=request.user,
+        )
+
+        return redirect("get_article", article_id=article.id)
+
+    return render(request, "create_post.html", {"form": form})
