@@ -84,3 +84,14 @@ input[type="submit"] {
 .content a {
     color: #ffffff;
 }
+
+.auth-links {
+    width: 960px;
+    margin: 10px auto;
+    text-align: right;
+}
+
+.auth-links a {
+    color: #ffffff;
+    margin-left: 15px;
+}

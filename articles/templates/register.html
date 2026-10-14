@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+</head>
+
+<body>
+
+<div class="content">
+
+    <h1>Регистрация</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="username"
+            placeholder="Логин"
+            value="{{ form.username|default:'' }}"
+        >
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value="{{ form.email|default:'' }}"
+        >
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Пароль"
+        >
+
+        <input type="submit" value="Зарегистрироваться">
+    </form>
+
+    {% if form.errors %}
+        <p class="error">{{ form.errors }}</p>
+    {% endif %}
+
+    <p>
+        <a href="{% url 'login' %}">Уже есть аккаунт? Войти</a>
+    </p>
+
+</div>
+
+</body>
+</html>
