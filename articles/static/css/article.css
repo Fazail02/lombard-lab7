@@ -95,3 +95,9 @@ input[type="submit"] {
     color: #ffffff;
     margin-left: 15px;
 }
+
+.one-post.folded .article-author,
+.one-post.folded .article-created-date,
+.one-post.folded .article-text {
+    display: none;
+}

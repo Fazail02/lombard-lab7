@@ -29,6 +29,8 @@
                     </a>
                 </h2>
 
+                <button class="fold-button">свернуть</button>
+
                 <div class="article-info">
                     <div class="article-author">
                         Автор: {{ post.author.username }}
@@ -48,6 +50,9 @@
 
         {% endfor %}
     </div>
+
+<script src="{% static 'js/helloworld.js' %}"></script>
+<script src="{% static 'js/fold-post.js' %}"></script>
 
 </body>
 </html>
